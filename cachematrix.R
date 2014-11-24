@@ -1,7 +1,7 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Create a matrix
+## Create a matrix that can have its inverse cached.
 
 makeCacheMatrix <- function(x = matrix()) {
     m <- NULL
@@ -17,7 +17,7 @@ makeCacheMatrix <- function(x = matrix()) {
     getinv = getinv)
 }
 
-## Return inverse
+## Return the inverse of that matrix using the "general inverse function- ginv() of the MASS package.
 
 cacheSolve <- function(x, ...) {
     m <- x$getinv()
@@ -26,7 +26,7 @@ cacheSolve <- function(x, ...) {
         return(m)
     }
     data <- x$get()
-    m <- ginv(data, ...)
+    m <- ginv(data, ...) # Calculates the Moore Penrose inverse.
     x$setinv(m)
     m
 }
